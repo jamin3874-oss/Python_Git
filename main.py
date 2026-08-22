@@ -82,7 +82,7 @@ def show_by_category():
 
     }
 
-    selected = categories[number   ]
+    selected = categories[number]
 
     print("[" + selected + "] 카테고리 프롬프트:")
 
@@ -166,17 +166,23 @@ def toggle_favorite():
 def show_favorites():
     print("=== 즐겨찾기 목록 ===")
 
-    count = 0
+    favorites = []
     for prompt in prompts:
         if prompt["favorite"]:
-            count = count + 1
-            print(count, "[" + prompt["category"] + "]", prompt["title"], "⭐")
+            favorites.append(prompt)
+
+    favorites = sorted(favorites, key=lambda p: p["category"])
+
+    count = 0
+    for prompt in favorites:
+        count = count + 1
+        print(count, "[" + prompt["category"] + "]", prompt["title"], "⭐")
 
 
     if count == 0:
         print("즐겨찾기한 프롬프트가 없습니다")
     else:
-        print("총", count, "개의 즐겨찾기")
+        print("총", count, "개의 즐겨찾기") 
 
 while True:
     print("=== 나만의 프롬프트 관리 ===")
