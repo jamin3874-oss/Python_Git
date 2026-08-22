@@ -88,6 +88,28 @@ def search_prompt():
     else:
         print(count, "개의 프롬프트를 찾았습니다.")
 
+def show_detail():
+    print("=== 프롬프트 상세 보기 ===")
+    number = input("번호 입력: ")
+    number = int(number)
+
+    if number < 1 or number > len(prompts):
+        print("잘못된 번호입니다.")
+        return
+
+    index = number - 1
+    prompt = prompts[index]
+    star = "⭐" if prompt["favorite"] else ""
+
+    print("----------------------------")
+    print("제목:", prompt["title"])
+    print("카테고리:", prompt["category"])
+    print("즐겨찾기:", star)
+    print("----------------------------")
+    print("내용:")
+    print(prompt["content"])
+    print("----------------------------")
+
 def delete_prompt():
     list_prompts()
     number = input("삭제할 프롬프트 번호를 입력해주세요: ")
@@ -103,6 +125,7 @@ while True:
     print("3. 프롬프트 삭제")
     print("4. 카테고리별 조회")
     print("5. 프롬프트 검색")
+    print("6. 프롬프트 상세 보기")
     print("0. 종료")
 
     choice = input("선택: ")
@@ -117,6 +140,8 @@ while True:
         show_by_category()
     elif choice == "5":
         search_prompt()
+    elif choice =="6":
+        show_detail()
     elif choice == "0":
         print("종료합니다.")
         break
