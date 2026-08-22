@@ -118,6 +118,39 @@ def delete_prompt():
     del prompts[index]
     print("프롬프트가 삭제되었습니다!")
 
+def toggle_favorite():
+    print("=== 즐겨찾기 관리 ===")
+    number = input("프롬프트 번호 입력: ")
+    number = int(number)
+
+    if number < 1 or number > len(prompts):
+        print("잘못된 번호입니다.")
+        return
+
+    index = number - 1
+    prompt = prompts[index]
+    prompt["favorite"] = not prompt["favorite"]
+
+    if prompt["favorite"]:
+        print("'" + prompt["title"] + "'프롬프트를 즐겨찾기에 추가했습니다!")
+    else:
+        print("'" + prompt["title"] + "'프롬프트를 즐겨찾기에서 해제했습니다!")
+
+def show_favorites():
+    print("=== 즐겨찾기 목록 ===")
+
+    count = 0
+    for prompt in prompts:
+        if prompt["favorite"]:
+            count = count + 1
+            print(count, "[" + prompt["category"] + "]", prompt["title"], "⭐")
+
+
+    if count == 0:
+        print("즐겨찾기한 프롬프트가 없습니다")
+    else:
+        print("총", count, "개의 즐겨찾기")
+
 while True:
     print("=== 나만의 프롬프트 관리 ===")
     print("1. 프롬프트 추가")
@@ -126,6 +159,8 @@ while True:
     print("4. 카테고리별 조회")
     print("5. 프롬프트 검색")
     print("6. 프롬프트 상세 보기")
+    print("7. 즐겨찾기 관리")
+    print("8. 즐겨찾기 목록")
     print("0. 종료")
 
     choice = input("선택: ")
@@ -142,6 +177,10 @@ while True:
         search_prompt()
     elif choice =="6":
         show_detail()
+    elif choice == "7":
+        toggle_favorite()
+    elif choice =="8":
+        show_favorites()
     elif choice == "0":
         print("종료합니다.")
         break
