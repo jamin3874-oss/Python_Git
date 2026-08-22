@@ -34,6 +34,43 @@ def list_prompts():
         star = "⭐" if prompt["favorite"] else ""
         print(i, "[" + prompt["category"] + "]",prompt["title"], star)
 
+def show_by_category():
+    print("=== 카테고리별 조회===")
+    print("1) 텍스트 생성")
+    print("2) 이미지 생성")
+    print("3) 영상 생성")
+    print("4) 페르소나")
+    print("5) 자동화")
+    print("6) 기타")
+
+    number = input("선택: ")
+
+    categories = {
+        "1": "텍스트 생성",
+        "2": "이미지 생성",
+        "3": "영상 생성",
+        "4": "페르소나",
+        "5": "자동화",
+        "6": "기타"
+
+    }
+
+    selected = categories[number   ]
+
+    print("[" + selected + "] 카테고리 프롬프트:")
+
+    count = 0
+    for prompt in prompts: 
+        if prompt["category"] == selected:
+            count  = count + 1
+            star = "⭐" if prompt["favorite"] else ""
+            print(count, prompt["title"], star)
+
+    if count == 0:
+        print("해당 카테고리에 프롬프트가 없습니다.")
+    else:
+        print("총", count, "개의 프롬프트")
+
 def delete_prompt():
     list_prompts()
     number = input("삭제할 프롬프트 번호를 입력해주세요: ")
@@ -47,6 +84,7 @@ while True:
     print("1. 프롬프트 추가")
     print("2. 프롬프트 목록")
     print("3. 프롬프트 삭제")
+    print("4. 카테고리별 조회")
     print("0. 종료")
 
     choice = input("선택: ")
@@ -57,6 +95,8 @@ while True:
         list_prompts()
     elif choice == "3":
         delete_prompt()
+    elif choice == "4":
+        show_by_category()
     elif choice == "0":
         print("종료합니다.")
         break
