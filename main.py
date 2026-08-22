@@ -21,12 +21,39 @@ prompts = [
 
 def add_prompt():
     title = input("제목: ")
-    content = input("내용: ")
-    category = input("카테고리 선택 (텍스트 생성, 이미지 생성, 영상 생성, 페르소나, 자동화, 기타): ") 
+    while title =="":
+        title = input("제목을 다시 입력해주세요: ")
 
-    prompt  ={"title": title, "content": content, "category": category, "favorite": False}
+    content = input("내용: ")
+    while content =="":
+        content = input("내용을 다시 입력해주세요: ")
+
+    print("카테고리 선택:")
+    print("1) 텍스트 생성")
+    print("2) 이미지 생성")
+    print("3) 영상 생성")
+    print("4) 페르소나")
+    print("5) 자동화")
+    print("6) 기타")
+    category_input = input("번호를 선택하거나 직접 입력하세요: ")
+
+    categories ={
+        "1": "텍스트 생성",
+        "2": "이미지 생성",
+        "3": "영상 생성",
+        "4": "페르소나",
+        "5": "자동화",
+        "6": "기타",           
+    }
+
+    if category_input in categories:
+        category = categories[category_input] 
+    else:
+        category = category_input
+
+    prompt = {"title": title, "content": content, "category": category, "favorite": False}
     prompts.append(prompt)
-    print("프롬프트가 추가되었습니다")
+    print("프롬프트가 추가되었습니다!")      
 
 def list_prompts():
     print(" === 프롬프트 목록 ===")
