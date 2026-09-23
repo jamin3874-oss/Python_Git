@@ -386,9 +386,7 @@ plt.close()                                                # 리소스 해제
 > 
 
 ### 캡처 #1 — 컬러 팔레트 실행 화면
-<img width="1024" height="804" alt="KakaoTalk_20260923_103815539" src="https://github.com/user-attachments/assets/7b69b22c-1625-4e5d-8751-82b848503df4" />
-
-컬러 팔레트 시각화 결과
+<img width="1024" height="804" alt="KakaoTalk_20260923_103623815" src="https://github.com/user-attachments/assets/7dde3ee5-c47e-4fe8-90fd-d9b68a27a317" />
 
 !컬러 팔레트 시각화 결과
 
@@ -519,7 +517,7 @@ BRAND_GENERATOR
 - 심볼 · 브랜드명 · 한글 설명문이 **세로 중앙 정렬**된 동일 레이아웃
 
 ### 캡처 #2 — 로고 시안 1 (`logo_1.png`)
-<img width="1024" height="804" alt="KakaoTalk_20260923_103837855" src="https://github.com/user-attachments/assets/6a2c63d0-413d-4865-8aba-ab1dd440127b" />
+<img width="1024" height="804" alt="KakaoTalk_20260923_103815539" src="https://github.com/user-attachments/assets/4b1ad656-4637-4e54-a947-2619376cb3c9" />
 
 로고 시안 1 - 빌딩과 나뭇잎 결합 심볼
 
@@ -560,10 +558,11 @@ BRAND_GENERATOR
 > **설명 문구에 주목할 점** — 로고 프롬프트에는 업종 문자열(`industry`)이 포함되어 있었고, 이미지 생성 모델이 이를 **업종 설명 문구로 읽어 그대로 이미지에 넣은 결과**입니다. 브리프의 업종이 로고 안에 텍스트로까지 반영된 사례입니다.
 > 
 
----
+--
 
 ### 캡처 #3 — 로고 시안 2 (`logo_2.png`)
-![Uploading KakaoTalk_20260923_103623815.jpg…]()
+<img width="1024" height="804" alt="KakaoTalk_20260923_103837855" src="https://github.com/user-attachments/assets/70eee362-2a1f-41fb-aad7-8603ce49dd3d" />
+
 
 로고 시안 2 - V자 잎 모양 모노그램
 
