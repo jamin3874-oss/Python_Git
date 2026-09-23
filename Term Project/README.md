@@ -386,6 +386,7 @@ plt.close()                                                # 리소스 해제
 > 
 
 ### 캡처 #1 — 컬러 팔레트 실행 화면
+<img width="1024" height="804" alt="KakaoTalk_20260923_103815539" src="https://github.com/user-attachments/assets/7b69b22c-1625-4e5d-8751-82b848503df4" />
 
 컬러 팔레트 시각화 결과
 
@@ -518,6 +519,7 @@ BRAND_GENERATOR
 - 심볼 · 브랜드명 · 한글 설명문이 **세로 중앙 정렬**된 동일 레이아웃
 
 ### 캡처 #2 — 로고 시안 1 (`logo_1.png`)
+<img width="1024" height="804" alt="KakaoTalk_20260923_103837855" src="https://github.com/user-attachments/assets/6a2c63d0-413d-4865-8aba-ab1dd440127b" />
 
 로고 시안 1 - 빌딩과 나뭇잎 결합 심볼
 
@@ -561,6 +563,7 @@ BRAND_GENERATOR
 ---
 
 ### 캡처 #3 — 로고 시안 2 (`logo_2.png`)
+![Uploading KakaoTalk_20260923_103623815.jpg…]()
 
 로고 시안 2 - V자 잎 모양 모노그램
 
