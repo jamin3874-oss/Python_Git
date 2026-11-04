@@ -1,0 +1,35 @@
+✔ 501 pages across PDFs are all included without a slide cap (1.2089ms)
+✔ hierarchical synthesis preserves every source at all levels (0.5326ms)
+✔ merge size bound never silently drops or truncates input (0.4579ms)
+✔ personal X requests and handwritten corrections keep sources (0.332ms)
+✔ small whole PDF uses a direct final notebook prompt (0.1954ms)
+✔ source edits invalidate a checkpoint, unrelated timestamps do not (0.2263ms)
+✔ untrusted AI output cannot execute HTML or links (0.4895ms)
+✔ image batch budget fits under the Vercel request ceiling (0.1806ms)
+✔ PWA manifest includes install icons and standalone scope (0.8349ms)
+✔ submission frontend has no React or external CDN runtime (1.9547ms)
+✔ fixed API host, image inputs, usage, manual redirects and safe system (31.0671ms)
+✔ public visitor cannot spend the owner environment key (0.7374ms)
+✔ environment key requires exact private access token (1.7076ms)
+✔ BYOK uses visitor key ahead of environment key (0.7587ms)
+✔ foreign origin, GET, JSON and roles are rejected before model call (1.0607ms)
+✔ redirection never forwards a key to another host (1.2771ms)
+✔ upstream error bodies and keys are redacted (2.3549ms)
+✔ request body and text budget are bounded (0.847ms)
+✔ malformed image URL and invalid base64 cannot reach upstream (0.5945ms)
+✔ truncation is exposed and network failures are not retried (0.9057ms)
+✔ one action automatically processes 501 pages and completes one notebook (53.5083ms)
+✔ small PDF needs only one image request, no redundant synthesis (0.3821ms)
+✔ failed API resumes after last durable batch and preserves previous notebook (0.7027ms)
+✔ manual stop saves completed response then resumes entire pipeline (0.5017ms)
+✔ image bytes bound reading groups independently of page count (0.3782ms)
+✔ source or request change starts a fresh complete reading (0.5097ms)
+✔ partial synthesis resumes without rereading or dropping source groups (1.7179ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.5807
