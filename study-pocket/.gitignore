@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.vercel/
+.openai/*
+!.openai/hosting.json
+__pycache__/
+*.pyc
+dist/
+outputs/
+test-results/
+node_modules/

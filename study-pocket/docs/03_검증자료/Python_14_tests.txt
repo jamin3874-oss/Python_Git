@@ -1,0 +1,19 @@
+test_bad_upstream_shape (test_api.APITests.test_bad_upstream_shape) ... ok
+test_byok_priority (test_api.APITests.test_byok_priority) ... ok
+test_errors_redacted_no_retry (test_api.APITests.test_errors_redacted_no_retry) ... ok
+test_fixed_host_and_header (test_api.APITests.test_fixed_host_and_header) ... ok
+test_invalid_image_and_url (test_api.APITests.test_invalid_image_and_url) ... ok
+test_invalid_key (test_api.APITests.test_invalid_key) ... ok
+test_jpeg_round_trip (test_api.APITests.test_jpeg_round_trip) ... ok
+test_model_and_tokens (test_api.APITests.test_model_and_tokens) ... ok
+test_no_redirect_handler (test_api.APITests.test_no_redirect_handler) ... ok
+test_oversize_text (test_api.APITests.test_oversize_text) ... ok
+test_private_environment_requires_exact_token (test_api.APITests.test_private_environment_requires_exact_token) ... ok
+test_public_cannot_use_environment_key (test_api.APITests.test_public_cannot_use_environment_key) ... ok
+test_system_override (test_api.APITests.test_system_override) ... ok
+test_truncation_usage (test_api.APITests.test_truncation_usage) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.005s
+
+OK
