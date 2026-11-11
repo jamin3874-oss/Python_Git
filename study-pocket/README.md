@@ -2,6 +2,14 @@
 
 특정 과목에 종속되지 않는 PDF 시험 공부 앱입니다. 여러 PDF를 모아 전체 노트를 만들고 질문을 이어갑니다. **HTML/CSS/JavaScript + Python 3.12 이상**으로 동작하며 프론트 프레임워크와 외부 CDN이 없습니다. PDF 파싱·그림 렌더링은 함께 제공하는 Mozilla PDF.js를 사용합니다.
 
+## 실제 Vercel 배포
+
+**앱 주소: https://study-pocket-six.vercel.app**
+
+2026-11-11에 GitHub 저장소를 Vercel `jaemin13/study-pocket` 프로젝트에 연결했습니다. 프로덕션 브랜치는 `study-pocket-pwa-20261104`, 앱 루트는 `study-pocket`입니다. 이 브랜치에 push하면 Vercel이 새 배포를 생성합니다.
+
+실제 배포 URL의 정적 리소스·PWA·Python API 오류 응답을 검사했고, Codyssey `claude-opus-4-8`에서 텍스트 응답 및 합성 JPEG 계산 이미지의 정답 `5`를 확인했습니다. 키는 기존 환경변수에서 메모리로만 사용했고 요청은 총 2회였습니다. 큰 PDF 전체의 실제 모델 정확도, 휴대폰 실기기 및 브라우저 클릭 검증은 별도입니다. 근거는 `docs/04_배포및사용안내/Vercel_배포완료_2026-11-11.md`와 검증 JSON에 있습니다.
+
 ## 실행
 
 Node.js 22.13 이상과 Python 3.12 이상을 설치한 뒤 이 폴더에서 실행합니다. 별도 npm/pip 라이브러리 설치는 필요하지 않습니다.
@@ -63,7 +71,7 @@ python -B -m unittest discover -s tests -p "test_*.py" -v
 python -B tests/http_check.py http://127.0.0.1:8788
 ```
 
-JavaScript 27개, Python 14개 테스트가 모의 API로 검증합니다. 실제 키의 유효성, 모델 답변의 학습 정확도, 휴대폰 설치 완료는 별도 확인이 필요합니다.
+JavaScript 27개, Python 14개 테스트는 모의 API로 검증합니다. 추가로 2026-11-11 실제 Vercel 배포에서 소량의 텍스트·이미지 모델 호출 2회를 확인했습니다. 자료 전체의 학습 정확도와 휴대폰 설치 완료는 별도 확인이 필요합니다.
 
 `worker/api.mjs`와 빌드 시 생성하는 `dist/server/index.js`는 Sites용 추가 호스팅 어댑터입니다. Vercel에서는 사용하지 않습니다. `.openai/hosting.json`은 이 Sites 실행본의 식별 설정이며, 새로운 제출 저장소에 복사할 필요는 없습니다.
 
