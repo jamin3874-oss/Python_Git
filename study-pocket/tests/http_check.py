@@ -16,7 +16,7 @@ def request(path, body=None, headers=None):
         return error.code, error.headers, error.read()
 
 
-for path, content_type in [('/', 'text/html'), ('/app.js', 'javascript'), ('/workflow.js', 'javascript'), ('/vendor/pdfjs/pdf.min.mjs', 'javascript'), ('/vendor/pdfjs/pdf.worker.min.mjs', 'javascript'), ('/manifest.webmanifest', 'manifest+json'), ('/icons/icon-192.png', 'image/png')]:
+for path, content_type in [('/', 'text/html'), ('/bootstrap.js', 'javascript'), ('/connection.js', 'javascript'), ('/app.js', 'javascript'), ('/workflow.js', 'javascript'), ('/vendor/pdfjs/pdf.min.mjs', 'javascript'), ('/vendor/pdfjs/pdf.worker.min.mjs', 'javascript'), ('/manifest.webmanifest', 'manifest+json'), ('/icons/icon-192.png', 'image/png')]:
     status, headers, body = request(path)
     assert status == 200, (path, status)
     assert content_type in headers.get('Content-Type', ''), (path, headers)
@@ -38,4 +38,4 @@ assert status == 403
 status, _, body = request('/sw.js')
 assert status == 200 and b"startsWith('/api/')" in body
 assert b'workflow.js' in body
-print('PASS: 7 assets, source-file isolation, missing key, foreign Origin, API cache exclusion, workflow offline asset')
+print('PASS: 9 assets, connection status, source-file isolation, missing key, foreign Origin, API cache exclusion, workflow offline asset')

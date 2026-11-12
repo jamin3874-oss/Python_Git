@@ -1,0 +1,45 @@
+{
+    "checkedDateKST":  "2026-11-12",
+    "url":  "https://study-pocket-six.vercel.app",
+    "passed":  true,
+    "scope":  "Real Vercel API with server key; signed-cookie login; production PDF.js renderer and notebook workflow in Node. No actual browser UI, mobile or private lecture PDF accuracy claim.",
+    "serverConfigured":  true,
+    "loginAndSubsequentRequests":  true,
+    "apiKeySentFromClient":  false,
+    "cookieFlags":  [
+                        "Secure",
+                        "HttpOnly",
+                        "SameSite=Strict",
+                        "Max-Age=2592000"
+                    ],
+    "pdfPages":  2,
+    "renderedPages":  [
+                          1,
+                          2
+                      ],
+    "notebookCompleted":  true,
+    "checkpointWrites":  3,
+    "noteCharacters":  459,
+    "containsExpectedAnswers":  true,
+    "followupChatCorrect":  true,
+    "logoutClearsCookie":  true,
+    "paidModelCalls":  [
+                           {
+                               "model":  "claude-opus-4-8",
+                               "seconds":  8.921,
+                               "usage":  {
+                                             "input_tokens":  3503,
+                                             "output_tokens":  421
+                                         }
+                           },
+                           {
+                               "model":  "claude-opus-4-8",
+                               "seconds":  2.458,
+                               "usage":  {
+                                             "input_tokens":  745,
+                                             "output_tokens":  57
+                                         }
+                           }
+                       ],
+    "userConfirmedPdfUploadAndNotebookView":  true
+}
