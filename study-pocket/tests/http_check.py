@@ -24,6 +24,11 @@ for path, content_type in [('/', 'text/html'), ('/app.js', 'javascript'), ('/wor
 for path in ['/.env', '/api/ai.py', '/server.py', '/.git/config']:
     status, _, _ = request(path)
     assert status in (404, 405), (path, status)
+status, headers, body = request('/api/ai')
+assert status == 200 and 'no-store' in headers.get('Cache-Control', '')
+connection = json.loads(body)
+assert isinstance(connection.get('server_configured'), bool)
+assert connection.get('authenticated') is False
 payload = json.dumps({'messages': [{'role': 'user', 'content': 'test'}], 'max_tokens': 32}).encode()
 status, _, body = request('/api/ai', payload, {'Content-Type': 'application/json', 'Origin': base})
 assert status == 401, (status, body)

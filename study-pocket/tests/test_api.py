@@ -3,8 +3,9 @@ import io
 import json
 import unittest
 import urllib.error
+import time
 from unittest.mock import Mock
-from api.ai import APIError, ENDPOINT, NoRedirect, process, select_key, validate
+from api.ai import APIError, ENDPOINT, NoRedirect, process, select_key, validate, session_action, valid_session, connection_status, SESSION_COOKIE, SESSION_TTL
 
 PAYLOAD = {'model': 'claude-opus-4-8', 'messages': [{'role': 'user', 'content': 'hello'}], 'max_tokens': 32}
 HEADERS = {'X-Codyssey-Key': 'mock-test-only-key'}
@@ -16,6 +17,47 @@ def response(data):
 
 
 class APITests(unittest.TestCase):
+    def test_session_cookie_authorizes_server_key_without_exposing_secrets(self):
+        env = {'CODYSSEY_API_KEY': 'mock-owner-api-key', 'STUDY_APP_ACCESS_TOKEN': 'mock-access-' + 'a' * 40}
+        body, cookie = session_action({'action':'login','access_code':env['STUDY_APP_ACCESS_TOKEN']}, env)
+        self.assertTrue(body['authenticated'])
+        for flag in ('HttpOnly', 'Secure', 'SameSite=Strict', 'Path=/', f'Max-Age={SESSION_TTL}'):
+            self.assertIn(flag, cookie)
+        for secret in env.values():
+            self.assertNotIn(secret, cookie + json.dumps(body))
+        headers = {'Cookie': cookie.split(';')[0]}
+        self.assertEqual(select_key(headers, env), env['CODYSSEY_API_KEY'])
+        self.assertTrue(connection_status(headers, env)['authenticated'])
+
+    def test_session_tampering_expiry_and_secret_rotation_deny_access(self):
+        env = {'CODYSSEY_API_KEY': 'mock-owner-api-key', 'STUDY_APP_ACCESS_TOKEN': 'a' * 40}
+        _, cookie = session_action({'action':'login','access_code':'a' * 40}, env)
+        raw = cookie.split(';')[0]
+        self.assertFalse(valid_session({'Cookie':raw[:-1] + ('0' if raw[-1] != '0' else '1')}, env))
+        self.assertFalse(valid_session({'Cookie':raw}, env, now=time.time() + SESSION_TTL + 1))
+        for name in env:
+            self.assertFalse(valid_session({'Cookie':raw}, {**env, name:'rotated-' + 'b' * 40}))
+        for malformed in ('', f'{SESSION_COOKIE}=garbage', 'x' * 5000):
+            self.assertFalse(valid_session({'Cookie':malformed}, env))
+
+    def test_login_rejects_wrong_code_or_missing_server_configuration(self):
+        env = {'CODYSSEY_API_KEY':'mock-owner-api-key','STUDY_APP_ACCESS_TOKEN':'a' * 40}
+        for value in ('wrong', None, [], 'x' * 501):
+            with self.assertRaises(APIError) as error:
+                session_action({'action':'login','access_code':value}, env)
+            self.assertEqual(error.exception.status,401)
+        with self.assertRaises(APIError) as error:
+            session_action({'action':'login','access_code':'a' * 40}, {})
+        self.assertEqual(error.exception.status,503)
+
+    def test_logout_expires_cookie_and_status_is_safe_without_login(self):
+        env = {'CODYSSEY_API_KEY':'mock-owner-api-key','STUDY_APP_ACCESS_TOKEN':'a' * 40}
+        body,cookie=session_action({'action':'logout'}, env)
+        self.assertFalse(body['authenticated']); self.assertIn('Max-Age=0',cookie)
+        status=connection_status({},env)
+        self.assertTrue(status['server_configured']);self.assertFalse(status['authenticated'])
+        self.assertNotIn(env['CODYSSEY_API_KEY'],json.dumps(status))
+
     def test_fixed_host_and_header(self):
         client = response({'content': [{'type': 'text', 'text': 'answer'}], 'model': 'mock', 'usage': {'input_tokens': 2}})
         result = process(PAYLOAD, HEADERS, {}, client)
