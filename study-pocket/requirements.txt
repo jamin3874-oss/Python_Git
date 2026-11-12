@@ -1,0 +1,2 @@
+# The Python API and local server use Python 3.12+ standard library only.
+# No API key or private material belongs in this repository.

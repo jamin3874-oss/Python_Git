@@ -1,0 +1,16 @@
+{
+  "url": "https://study-pocket-six.vercel.app",
+  "checked_at_kst": "2026-11-11T23:17:48.917346+09:00",
+  "scope": "One synthetic JPEG + multi-turn message request; not a PDF handwriting accuracy score.",
+  "status": "passed",
+  "http_status": 200,
+  "model": "claude-opus-4-8",
+  "expected": "5",
+  "answer": "5",
+  "jpeg_bytes": 5098,
+  "usage": {
+    "input_tokens": 356,
+    "output_tokens": 3
+  },
+  "elapsed_seconds": 2.11
+}

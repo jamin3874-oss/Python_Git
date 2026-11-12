@@ -1,0 +1,11 @@
+{
+  "id": "/", "name": "공부주머니 · PDF 시험 공부", "short_name": "공부주머니",
+  "description": "여러 PDF와 작은 손글씨를 통합 노트로 정리하고 AI와 대화하는 학습 앱",
+  "lang": "ko", "start_url": "/", "scope": "/", "display": "standalone",
+  "background_color": "#f7f8f4", "theme_color": "#163e39",
+  "icons": [
+    {"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/icons/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ]
+}

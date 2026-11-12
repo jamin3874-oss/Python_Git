@@ -1,0 +1,15 @@
+{
+  "url": "https://study-pocket-six.vercel.app",
+  "checked_at_kst": "2026-11-11T23:15:58.365276+09:00",
+  "scope": "One 32-token connection request; no PDF, no handwriting accuracy test.",
+  "status": "passed",
+  "http_status": 200,
+  "model": "claude-opus-4-8",
+  "response_received": true,
+  "ok_reply": true,
+  "usage": {
+    "input_tokens": 230,
+    "output_tokens": 4
+  },
+  "elapsed_seconds": 2.727
+}
